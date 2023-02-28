@@ -47,6 +47,8 @@ nav a {
 body{
   min-height: 100vh; 
    overflow-x: hidden;
+       background-image: url(./assets/texture.jpg);
+
 }
 
 footer{

@@ -39,6 +39,7 @@ form{
 }
 ul{
     width: 80px;
+    text-align: start;
 }
 
 input{
@@ -62,7 +63,7 @@ flex-basis: 100%;
 }
   .last{
     background-color: #a89a3b;
-    color: white;
+    color: rgb(0, 0, 0);
   }
 
 </style>

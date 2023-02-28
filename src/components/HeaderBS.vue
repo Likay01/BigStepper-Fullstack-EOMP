@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="back container-fluid">
         <div class="container-fluid">
-        <a class="logo navbar-brand" href="#">
+        <a class="logo navbar-brand" href="/">
           <img src="https://i.postimg.cc/s1dx3stM/My-project-1-5.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2">
           Big Stepper
         </a>
@@ -16,6 +16,7 @@
           <router-link class="me-3" to="/">Home</router-link> 
           <a href="#about" class="myAbout">About</a> 
           <router-link class="me-3" to="/products">Products</router-link> 
+          <router-link class="me-3" to="/admin">Admin</router-link> 
           <router-link class="me-3" to="/login&signup">LogIn </router-link>
             </ul>
         <form class="d-flex mb-2 m-1" role="search">

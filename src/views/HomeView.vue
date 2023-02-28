@@ -2,9 +2,10 @@
 <video autoplay loop muted playsinline class="MyVid">
   <source src="../assets/BigStepper.mp4" type="video/mp4">
 </video>
-  <h1>NIKE</h1>
+  <h1>NIKE ? We got you!</h1>
 <div class="headline">
 <div class="slideshow">
+  <router-link to="/products" class="linkPro">
   <div class="block">
 <img src="../assets/blue.jpg" alt="nike">
   </div>
@@ -35,12 +36,15 @@
       <div class="block">
     <img src="../assets/Waffle.jpg" alt="">
        </div>
+      </router-link>
   </div>
 </div>
 <div class="in-depth" id="about">
 <div class="col-6 descript">
  <h5>Welcome to Big Stepper, the ultimate destination for sneaker enthusiasts. At Big Stepper, we understand the importance of having the best pair of sneakers to complete your look. That's why we offer a range of authentic, high-quality sneakers from the world's most coveted brands</h5>
- <button type="button" class="btn btn-outline-dark">Products</button>
+  <router-link to="/products" class="btn btn-outline-dark">
+   Products
+ </router-link>
 </div>
 <div class="col-6 NB"></div>
 </div>
@@ -72,6 +76,9 @@ h1{
 position: relative;
 place-items: center;
 overflow: hidden;
+}
+.linkPro{
+display: flex;
 }
 .slideshow{
   display: flex;
@@ -131,7 +138,7 @@ animation-delay: 0,1s;
 animation-fill-mode: forwards;
 
 }
-button{
+.btn{
 border: solid 2px;
 font-size: xx-large;
 margin-right: 50rem;
