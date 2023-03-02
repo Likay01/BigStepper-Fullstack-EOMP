@@ -8,14 +8,7 @@ let connections = mysql.createPool({
   password: process.env.DBPASS,
   Port: process.env.DBPORT,
   multipleStatements: true,
-  connectionLimit: 30
-});
-
-connections.connect((err) => {
-  if (err) throw err;
-  else {
-    console.log("successfully connected database");
-  }
+  connectionLimit: 30,
 });
 
 module.exports = connections;
