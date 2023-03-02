@@ -12,11 +12,6 @@ app.use((req, res, next)=> {
     next();
 });
 
-const app = express();
-app.use(cors({
-  origin: 'http://localhost:8081'
-}));
-
 const { errorHandling } = require("./middleware/ErrorHandling");
 
 
