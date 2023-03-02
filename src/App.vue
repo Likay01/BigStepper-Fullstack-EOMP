@@ -12,7 +12,7 @@
 </template>
 
 <script> 
-   import NavbarBS from "./components/HeaderBS.vue";
+   import NavbarBS from "./components/NavbarBS.vue";
 import footerBS from "./components/FooterBS.vue";
 
 
