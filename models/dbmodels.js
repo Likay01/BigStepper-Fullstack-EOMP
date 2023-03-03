@@ -47,7 +47,7 @@ class Users {
               });
               if (Result) {
                 res.status(200).json({
-                  msg: "welcome back"[data.username],
+                  msg: "welcome back"[data.userId],
                   jwToken,
                   result: data[0],
                 });
@@ -92,8 +92,8 @@ class Users {
       data.userPass = hashSync(data.userPass, 15);
     database.query(
       `Update Users SET userId = ?, userProfile = ?, firstName = ?, lastName = ?, cellphone = ?, email_Add = ?, userPass = ?, address = ?, gender = ? 
-        WHERE username = ?;`,
-        [ data.userId, data.userProfile, data.firstName, data.lastName, data.cellphone, data.email_Add, data.userPass, data.address, data.gender, reqUsername],
+        WHERE userId = ?;`,
+        [ data.userId, data.userProfile, data.firstName, data.lastName, data.cellphone, data.email_Add, data.userPass, data.address, data.gender, reqUserId],
       (err, result) => {
         if (err) throw err;
         else {
@@ -162,7 +162,7 @@ class Products {
   showProduct(req, res) {
     let reqProduct = req.params.productId;
     database.query(
-      `SELECT productId, productName, productImage, price, size, quantity, username  
+      `SELECT productId, productName, productImage, price, size, quantit
       FROM Products  
       WHERE productId = ?;`,
       [reqProduct],

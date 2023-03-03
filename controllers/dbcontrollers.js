@@ -19,7 +19,7 @@ router.post("/login", bodyParser.json(), (req, res) => {
   user.login(req, res);
 });
 
-router.get("/users/:username", (req, res) => {
+router.get("/users/:userId", (req, res) => {
   user.showUser(req, res);
 });
 
@@ -27,11 +27,11 @@ router.get("/users", (req, res) => {
   user.showAllUsers(req, res);
 });
 
-router.delete("/users/:username", (req, res) => {
+router.delete("/users/:userId", (req, res) => {
   user.deleteUser(req, res);
 });
 
-router.put("/users/:username", bodyParser.json(), (req, res) => {
+router.put("/users/:userId", bodyParser.json(), (req, res) => {
   user.updateUser(req, res);
 });
 

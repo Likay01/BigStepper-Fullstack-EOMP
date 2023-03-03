@@ -24,7 +24,6 @@ express.urlencoded({ extended: true}));
 
 app.listen(port, (req, res) => {
     console.log(`you are connected on port ${port}`);
-    console.log("click here http://localhost:8000");
 })
 
 app.use(errorHandling);
