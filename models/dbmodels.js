@@ -30,7 +30,7 @@ class Users {
   login(req, res) {
     let data = req.body
     database.query(
-     `SELECT username, userProfile, firstName, lastName, cellphone, email_Add, userPass, address, gender 
+     `SELECT userId, userProfile, firstName, lastName, cellphone, email_Add, userPass, address, gender 
       FROM Users  
       WHERE email_Add = ? AND userPass = ? ;`,[data.email_Add, data.userPass ], async (err, result) => {
         if(result.length === 0) {
@@ -63,16 +63,16 @@ class Users {
   }
 
   showUser(req, res) {
-    let reqUsername = req.params.username;
+    let reqUserId = req.params.userId;
     database.query(
-      `SELECT username, userProfile, firstName, lastName, cellphone, email_Add, userPass, address, gender 
+      `SELECT userId, userProfile, firstName, lastName, cellphone, email_Add, userPass, address, gender 
       FROM Users  
-      WHERE username = ?;`,
-      [reqUsername],
+      WHERE userId = ?;`,
+      [reqUserId],
       (err, data) => {
         if (err) {
           res.status(400).json({ err });
-        } else res.status(200).json({ username: data });
+        } else res.status(200).json({ userId: data });
       }
     );
   }
@@ -86,14 +86,14 @@ class Users {
   }
 
   updateUser(req, res) {
-    let  reqUsername = req.params.username;
+    let  reqUserId = req.params.userId;
     let data = req.body
     if (data.userPass !== null || data.userPass !== undefined)
       data.userPass = hashSync(data.userPass, 15);
     database.query(
-      `Update Users SET username = ?, userProfile = ?, firstName = ?, lastName = ?, cellphone = ?, email_Add = ?, userPass = ?, address = ?, gender = ? 
+      `Update Users SET userId = ?, userProfile = ?, firstName = ?, lastName = ?, cellphone = ?, email_Add = ?, userPass = ?, address = ?, gender = ? 
         WHERE username = ?;`,
-        [ data.username, data.userProfile, data.firstName, data.lastName, data.cellphone, data.email_Add, data.userPass, data.address, data.gender, reqUsername],
+        [ data.userId, data.userProfile, data.firstName, data.lastName, data.cellphone, data.email_Add, data.userPass, data.address, data.gender, reqUsername],
       (err, result) => {
         if (err) throw err;
         else {
@@ -104,11 +104,11 @@ class Users {
   }
 
   deleteUser(req, res) {
-    let  reqUsername = req.params.username;
+    let  reqUserId = req.params.userId;
     database.query(
       `DELETE FROM Users 
-      WHERE username = ? ;`,
-      [reqUsername],
+      WHERE userId = ? ;`,
+      [reqUserId],
       (err,) => {
         if (err) throw err;
         else res.status(200).json({msg : 'Deleted successfully'});
@@ -133,9 +133,9 @@ class Products {
     let  reqProduct = req.params.productId;
     let data = req.body
     database.query(
-      `Update Products SET productId = ?, productName = ?, productImage = ?, price = ?, size = ?, quantity = ?, username = ? 
+      `Update Products SET productId = ?, productName = ?, productImage = ?, price = ?, size = ?, quantity = ?, userId = ? 
         WHERE productId = ?`,
-        [ data.productId, data.productName, data.productImage, data.price, data.size, data.quantity, data.username, reqProduct],
+        [ data.productId, data.productName, data.productImage, data.price, data.size, data.quantity, data.userId, reqProduct],
       (err, result) => {
         if (err) throw err;
         else {
