@@ -81,7 +81,7 @@ overflow: hidden;
 display: flex;
 }
 .slideshow{
-  display: flex;
+display: flex;
 width: calc(250px * 18);
 animation: scroll 40s linear infinite;
 }
@@ -179,6 +179,12 @@ animation-fill-mode: forwards;
   .MyVid{
     width: 100%;
     height: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .slideshow{
+    scale: 0.6;
   }
 }
 </style>

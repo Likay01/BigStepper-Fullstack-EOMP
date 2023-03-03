@@ -22,24 +22,18 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Product</th>
-          <th scope="col">Img</th>
           <th scope="col">price</th>
           <th scope="col">size</th>
           <th scope="col">Quantity</th>
-          <th scope="col">Del</th>
-          <th scope="col">Edit</th>
         </tr>
       </thead>
       <tbody class="Table">
-        <tr v-for="product in users" :key="product.productId">
+        <tr v-for="product in products" :key="product.productId">
           <td>{{product.productId}}</td>
           <td>{{product.productName}}</td>
-          <td>{{product.productImg}}</td>
           <td>{{product.price}}</td>
           <td>{{product.size}}</td>
           <td>{{product.quantity}}</td>
-          <td>del</td>
-          <td>mod</td>
         </tr>
       </tbody>
     </table>
@@ -50,7 +44,6 @@
         <thead>
           <tr>
             <th scope="col">User</th>
-            <th scope="col">Profile</th>
             <th scope="col">Name</th>
             <th scope="col">Surname</th>
             <th scope="col">Cellphone</th>
@@ -59,14 +52,11 @@
             <th scope="col">Address</th>
             <th scope="col">Gender</th>
             <th scope="col">Role</th>
-            <th scope="col">Del</th>
-            <th scope="col">Edit</th>
           </tr>
         </thead>
         <tbody class="userTable">
           <tr v-for="user in users" :key="user.username">
            <td>{{user.userId}}</td>
-           <td>{{user.userImage}}</td>
            <td>{{user.firstName}}</td>
            <td>{{user.lastName}}</td>
            <td>{{user.cellphone}}</td>
@@ -75,8 +65,6 @@
            <td>{{user.address}}</td>
            <td>{{user.gender}}</td>
            <td>{{user.userRole}}</td>
-           <td><button>bin</button></td>
-           <td>mod</td>
           </tr>
         </tbody>
       </table>

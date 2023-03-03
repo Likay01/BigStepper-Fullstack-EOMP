@@ -66,4 +66,10 @@ flex-basis: 100%;
     color: rgb(0, 0, 0);
   }
 
+  @media screen and (max-width: 600px){
+    .contained {
+      scale: 1;
+    }
+  }
+
 </style>
