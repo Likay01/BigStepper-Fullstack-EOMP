@@ -37,18 +37,18 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form class="form" @submit.prevent="signUp">
             <div class="col-6 sec">
                         <div class="confidential">
                           <div class="mb-3">
-                            <label for="Username1" class="form-label text-white">Username</label>
-                            <input type="username" class="form-control inP" id="UserName" aria-describedby="username" required>
+                            <label for="Username1" class="form-label text-white">ID</label>
+                            <input type="number" class="form-control inP" id="UserName" aria-describedby="username" v-model="info.userId">
                           </div>
                          </div>
                           <div class="confidentials">
                          <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label text-white">UserProfile</label>
-                            <input type="text" class="form-control inP text-danger" id="userProfile" placeholder="eg. URL">
+                            <input type="text" class="form-control inP text-danger" id="userProfile" placeholder="eg. URL" v-model="info.userProfile">
                           </div>
                           </div>
                         </div>
@@ -56,13 +56,13 @@
                           <div class="confidential">
                           <div class="mb-3">
                             <label for="firstName" class="form-label text-white">FirstName</label>
-                            <input type="firstName" class="form-control inP" id="firstName" aria-describedby="firstName" required>
+                            <input type="firstName" class="form-control inP" id="firstName" aria-describedby="firstName" v-model="info.firstName" required>
                           </div>
                         </div>
                           <div class="confidentials">
                           <div class="mb-3">
                             <label for="lastName" class="form-label text-white">LastName</label>
-                            <input type="lastName" class="form-control inP" id="lastName" aria-describedby="lastName" required>
+                            <input type="lastName" class="form-control inP" id="lastName" aria-describedby="lastName" v-model="info.lastName" required>
                           </div>
                           </div>           
                         </div>
@@ -70,13 +70,13 @@
                           <div class="confidential">
                           <div class="mb-3">
                             <label for="cellPhone" class="form-label text-white">Cellphone</label>
-                            <input type="number" class="form-control inP" id="cellPhone" aria-describedby="cellPhone" placeholder="eg.(000)000-0000" required>
+                            <input type="tel" class="form-control inP" id="cellPhone" aria-describedby="cellPhone" placeholder="eg.(000)000-0000" v-model="info.cellPhone" required>
                           </div>
                           </div>   
                           <div class="confidentials">
                           <div class="mb-3">
                             <label for="InputEmail1" class="form-label text-white">Email</label>
-                            <input type="email" class="form-control inP" id="InputEmail1" aria-describedby="emailHelp" placeholder="example@bigstepper.com" required>
+                            <input type="email" class="form-control inP" id="InputEmail1" aria-describedby="emailHelp" placeholder="example@bigstepper.com" v-model="info.email_Add" required>
                           </div>
                         </div>
                       </div>
@@ -84,13 +84,13 @@
                        <div class="confidential">
                           <div class="mb-3">
                             <label for="userPass" class="form-label text-white" >Password</label>
-                            <input type="password" class="form-control inP" id="userPass" placeholder="eg.********" required>
+                            <input type="password" class="form-control inP" id="userPass" placeholder="eg.********" autocomplete="off" v-model="info.userPass" required>
                           </div>
                           </div>           
                           <div class="confidentials">
                           <div class="mb-3">
                             <label for="address" class="form-label text-white" >Address</label>
-                            <input type="address" class="form-control inP" id="address" required>
+                            <input type="address" class="form-control inP" id="address" v-model="info.address" required>
                           </div>
                           </div>
                           </div>
@@ -98,7 +98,7 @@
                           <div class="col-6 ">
                           <div class="mb-3">
                             <label for="gender" class="form-label text-white Gen" >Gender</label>
-                            <input type="text" class="form-control G-in" id="gender" placeholder="Male/Female/Other" required>
+                            <input type="text" class="form-control G-in" id="gender" placeholder="Male/Female/Other" v-model="info.gender" required>
                           </div>
                          </div>
                          </div>
@@ -108,7 +108,9 @@
                             <input type="checkbox" class="form-check-input" id="Check1" required>
                           </div>
                           <div class="form-text text-white mb-3">Information provided is confidential information.</div>
-            
+                          <div class="form-control-wrapper">  
+                            <label class="form-control bg-gradient" v-show="userMsg">{{userMsg}}</label>
+                          </div>
                           <button type="submit" class="btn btn-success text-white">Submit</button>
                       </form>            
   </div>
@@ -121,8 +123,34 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core';
+import { useStore } from 'vuex';
     export default {
-        
+     setup(){
+      const info = {
+        userId:'',
+        userProfile:'',
+        firstName:'',
+        lastName:'',
+        cellPhone:'',
+        email_Add:'',
+        userPass:'',
+        address:'',
+        gender:''
+      };
+      const st = useStore();
+      const signUp = ()=> {
+        st.dispatch("signup", info);
+        st.dispatch("users", info);
+      }
+      const userMsg = 
+      computed( ()=>st.state.message )
+      return {
+        info,
+        userMsg,
+        signUp
+      }
+     }
     }
 </script>
 

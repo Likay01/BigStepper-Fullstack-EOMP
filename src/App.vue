@@ -3,7 +3,7 @@
 <NavbarBS></NavbarBS>
   </header>
   <body>
-    
+  <Spinner/> 
   <router-view/>
   </body>
   <footer>
@@ -14,12 +14,13 @@
 <script> 
    import NavbarBS from "./components/NavbarBS.vue";
 import footerBS from "./components/FooterBS.vue";
-
+import Spinner from "./components/SpinnerBS.vue"
 
   export default {
 components:{
 NavbarBS,
-footerBS
+footerBS,
+Spinner
 }
   }
 </script>
